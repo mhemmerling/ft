@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TestTask{% endblock %}
+
+{% block body %}
+    <h1>Send Message</h1>
+    <form id="send-message" method="POST">
+        <div class="mb-3">
+            <label for="title-input" class="form-label">Author</label>
+            <input type="text" class="form-control" id="author-input" minlength="1" maxlength="255" required>
+        </div>
+        <div class="mb-3">
+            <label for="title-input" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title-input" minlength="3" maxlength="255" required>
+        </div>
+        <div class="mb-3">
+            <label for="content-input" class="form-label">Message</label>
+            <input type="text" class="form-control" id="content-input" minlength="5" maxlength="100" required>
+        </div>
+        <div class="mb-3">
+            <label for="recipients-input" class="form-label">Recipients</label>
+            <select class="form-select" id="recipients-input" multiple required>
+                {% for user in users %}
+                    <option value="{{ user.id }}">{{ user.email }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <button class="btn btn-primary" type="submit">Send message</button>
+        </div>
+    </form>
+
+    <script src="/assets/sendMessage.js"></script>
+{% endblock %}

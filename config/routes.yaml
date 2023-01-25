@@ -1,0 +1,14 @@
+main:
+    path: /
+    controller: App\Controller\MainController::index
+
+messages_api:
+    resource: ../src/Message/Resources/routes.yml
+
+user_login:
+    path: /login
+    controller: App\User\Application\UserController::login
+
+user_register:
+    path: /register
+    controller: App\User\Application\UserController::register

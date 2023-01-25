@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TestTask{% endblock %}
+{% block body %}
+    <h1>Sent messages</h1>
+
+    {% for message in messages %}
+    <div class="card">
+        <div class="card-header">
+            {{ message.title }}
+            {% if message.sender is not null %}
+                <small>(Sent by {{ message.sender.email }})</small>
+            {% endif %}
+            <span class="badge badge-primary">{{ message.context }}</span>
+        </div>
+        <div class="card-body">
+            <p class="card-text">{{ message.content }}</p>
+        </div>
+        <div class="card-footer text-muted">
+            <a href="{{ path('messages_edit', {id: message.id}) }}" class="btn btn-sm btn-secondary">Edit</a>
+            <a href="javascript:deleteWholeMessage({{ message.id }})" class="btn btn-sm btn-secondary">Delete</a>
+            Sent on {{ message.createdAt|date('d.m.Y H:i') }}
+        </div>
+    </div>
+    <br/>
+    {% endfor %}
+
+    <script src="/assets/sentMessages.js"></script>
+{% endblock %}

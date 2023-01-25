@@ -1,0 +1,49 @@
+messages_send:
+  methods: GET
+  path: /messages/send
+  controller: App\Message\Infrastructure\Controller\MessageWebController::send
+
+messages_edit:
+  methods: GET
+  path: /messages/edit/{id<\d+>}
+  controller: App\Message\Infrastructure\Controller\MessageWebController::edit
+
+messages_sent:
+  methods: GET
+  path: /messages/sent
+  controller: App\Message\Infrastructure\Controller\MessageWebController::sent
+
+messages_all_read:
+  methods: GET
+  path: /messages
+  controller: App\Message\Infrastructure\Controller\MessageWebController::list
+
+api_message_read:
+  path: /api/v1/messages/{id<\d+>}/read
+  methods: PUT
+  controller: App\Message\Infrastructure\Controller\MessageApiController::read
+
+api_message_unread:
+  path: /api/v1/messages/{id<\d+>}/unread
+  methods: PUT
+  controller: App\Message\Infrastructure\Controller\MessageApiController::unread
+
+api_message_send:
+  path: /api/v1/messages
+  methods: POST
+  controller: App\Message\Infrastructure\Controller\MessageApiController::send
+
+api_message_delete:
+  path: /api/v1/messages/{id<\d+>}
+  methods: DELETE
+  controller: App\Message\Infrastructure\Controller\MessageApiController::delete
+
+api_message_edit:
+  path: /api/v1/messages/{id<\d+>}
+  methods: PUT
+  controller: App\Message\Infrastructure\Controller\MessageApiController::edit
+
+api_message_delete_by_author:
+  path: /api/v1/messages/{id<\d+>}/full
+  methods: DELETE
+  controller: App\Message\Infrastructure\Controller\MessageApiController::deleteByAuthor

@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TestTask{% endblock %}
+
+{% block body %}
+    <h1>Send Message</h1>
+    <form id="edit-message" method="POST">
+        <input type="hidden" id="id-input" value="{{ id }}">
+        <div class="mb-3">
+            <label for="title-input" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title-input" minlength="3" maxlength="255" value="{{ message.title }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="content-input" class="form-label">Message</label>
+            <input type="text" class="form-control" id="content-input" minlength="5" value="{{ message.content }}" maxlength="100" required>
+        </div>
+        <div class="mb-3">
+            <button class="btn btn-primary" type="submit">Edit message</button>
+        </div>
+    </form>
+
+    <script src="/assets/editMessage.js"></script>
+{% endblock %}
